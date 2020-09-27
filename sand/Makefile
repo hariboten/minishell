@@ -1,6 +1,9 @@
 CC = gcc
 CFLAGS = -g -O0
 
+read : read.c
+	$(CC) $(CFLAGS) -o $@ $^
+
 pipe : pipe.c helloWorld
 	$(CC) $(CFLAGS) -o $@ $<
 

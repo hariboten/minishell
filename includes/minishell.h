@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 16:28:47 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/09/11 13:10:55 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/09/27 16:03:31 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdint.h>
+# include <errno.h>
 # include <stdbool.h>
 # include <fcntl.h>
 # include <signal.h>
@@ -26,6 +28,7 @@
 # define STR_OPT_LN "-n"
 # define EM_TOO_MANY_ARG "too many arg"
 # define MINISHELL "minishell :"
+# define PATH_MAX 1023
 
 typedef enum	e_errno
 {
@@ -33,8 +36,20 @@ typedef enum	e_errno
 	FEW_ARG
 }	t_errno;
 
+typedef struct	s_commands
+{
+	t_list	*com;
+	t_list	*args;
+	t_list	*input;
+	t_list	*output;
+}	t_commands;
+
 void	minishell();
-void	sh_exit();
-int		ft_echo(char **argv);
+int		sh_exit();
+int		sh_echo(char **argv);
+int		sh_cd(char **argv);
+int		sh_env(char **argv);
+int		sh_export(char **argv);
+int		sh_unset(char **argv);
 
 #endif
