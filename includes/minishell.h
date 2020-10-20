@@ -6,7 +6,7 @@
 /*   By: ewatanab <ewatanab@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/09 16:28:47 by ewatanab          #+#    #+#             */
-/*   Updated: 2020/09/27 16:03:31 by ewatanab         ###   ########.fr       */
+/*   Updated: 2020/10/20 16:06:03 by ewatanab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,15 @@ typedef struct	s_commands
 	t_list	*input;
 	t_list	*output;
 }	t_commands;
+
+typedef	struct	s_exec
+{
+	t_list	*list;
+	char	**argv;
+	char	**envp;
+	int		fd_in;
+	int		fd_out;
+}				t_exec;
 
 void	minishell();
 int		sh_exit();
